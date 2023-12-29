@@ -51,6 +51,52 @@ public class ListOfNamesServiceImp implements ListOfNamesService {
 		}else {
 			throw new IllegalArgumentException("id is present");
 		}
+	}
+
+	@Override
+	public ListOfNamesEntity putdetails(Detail items) {
 		
+		Optional<ListOfNamesEntity> findById = repo.findById(items.getUser_id());
+		if(!findById.isEmpty()) {
+			ListOfNamesEntity listOfNamesEntity = findById.get();
+			listOfNamesEntity.setUser_name(items.getUser_name());
+			ListOfNamesEntity save = repo.save(listOfNamesEntity);
+			return save;
+		}else {
+			throw new EntityNotFoundException("id not found");
+		}
+	}
+
+	@Override
+	public ListOfNamesEntity patchdetails(Detail items) {
+		Optional<ListOfNamesEntity> findById = repo.findById(items.getUser_id());
+		if(findById.isPresent()) {
+			ListOfNamesEntity listOfNamesEntity = findById.get();
+			if(items.getUser_name() != null) {
+				listOfNamesEntity.setUser_name(items.getUser_name());
+			}
+			if(items.getAge() != 0) {
+				listOfNamesEntity.setAge(items.getAge());
+			}
+			ListOfNamesEntity save = repo.save(listOfNamesEntity);
+			return save;
+		}
+		else {
+			throw new EntityNotFoundException("id not found");
+		}	
+	}
+
+	@Override
+	public ListOfNamesEntity deletedetails(int id) {
+		Optional<ListOfNamesEntity> findById = repo.findById(id);
+		
+		if(findById.isPresent()) {
+			ListOfNamesEntity listOfNamesEntity = findById.get();
+			repo.deleteById(id);
+			return listOfNamesEntity;
+		}
+		else {
+			throw new EntityNotFoundException("id not found");
+		}
 	}
 }

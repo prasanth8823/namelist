@@ -15,8 +15,19 @@ public class ListOfNamesEntity {
 	
 	@Column(name = "user_name")
 	String user_name;
-
 	
+	@Column(name = "age")
+	int age;
+	
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 	public int getUser_id() {
 		return user_id;
 	}

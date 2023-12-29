@@ -7,7 +7,14 @@ public class Detail {
 	
 	int user_id;
 	String user_name;
+	int age;
 	
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
 	public int getUser_id() {
 		return user_id;
 	}

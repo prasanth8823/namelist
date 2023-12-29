@@ -11,4 +11,13 @@ public interface ListOfNamesService {
 	String getName(int id);
 	
 	ListOfNamesEntity postdetails(Detail items);
+	
+	ListOfNamesEntity putdetails(Detail items);
+	
+	ListOfNamesEntity patchdetails(Detail items);
+	
+	ListOfNamesEntity deletedetails(int id);
+	
+	
+	
 }
